@@ -5,7 +5,6 @@ import onlineIcon from "../../icons/onlineIcon.png";
 import './TextContainer.css';
 
 const TextContainer = ({ users }) => {
-  console.log(users);
   return (
     <div className="textContainer">
       <div>

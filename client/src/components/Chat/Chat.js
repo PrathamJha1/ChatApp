@@ -8,8 +8,7 @@ import Messages from "../Messages/Messages";
 import './Chat.css';
 import TextContainer from "../TextContainer/TextContainer";
 
-const ENDPOINT = 'http://localhost:5000';
-
+const ENDPOINT = 'https://chatapp-dicordstyle.netlify.app/';
 let socket;
 
 const Chat = () => {
@@ -18,12 +17,16 @@ const Chat = () => {
   const [users, setUsers] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-
+  
   const url = useLocation().search;
   useEffect(() => {
     const { name, room } = queryString.parse(url);
-    socket = io(ENDPOINT);
-
+    socket = io(ENDPOINT,{
+      cors:{
+        origin:"*"
+      }
+    });
+    console.log(socket);
     setRoom(room);
     setName(name);
     socket.emit('join',{name,room},()=>{});

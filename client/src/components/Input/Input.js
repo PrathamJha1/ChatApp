@@ -14,7 +14,7 @@ const Input = ({message,setMessage,sendMessage})=>{
             value={message}
             placeholder="Type a Message"
             onChange={HandleChange}
-            onKeyPress = {event=>event.key=='Enter'?sendMessage(event):null}
+            onKeyPress = {event=>event.key==='Enter'?sendMessage(event):null}
             />
             <button className="sendButton" onClick={(event)=>sendMessage(event)}>Send </button>
         </form>

@@ -3,9 +3,8 @@ const express = require('express');
 const socketio = require('socket.io');
 const cors = require('cors');
 const {addUser,getUser,removeUser,getUsersInRoom} = require('./users');
-
-const router = require('./router');
-
+const serverless = require('serverless-http');
+const router=express.Router();
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server,{
@@ -15,7 +14,15 @@ const io = socketio(server,{
 });
 
 app.use(cors());
-app.use(router);
+router.get('/',(req,res)=>{
+    res.send("Server is up and running ");
+});
+
+router.get('/json',(req,res)=>{
+    res.send("Oooo Papi");
+})
+
+app.use('/.netlify/functions/api',router);
 
 io.on('connection', (socket)=>{
     console.log("We have  a new connection !!!");
@@ -46,4 +53,5 @@ io.on('connection', (socket)=>{
     })
 })
 
-server.listen(process.env.PORT || 5000, () => console.log(`Server has started`));
+server.listen(process.env.PORT || 9000, () => console.log(`Server has started`));
+module.exports.handler = serverless(app);
