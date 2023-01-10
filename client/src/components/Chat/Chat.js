@@ -8,7 +8,7 @@ import Messages from "../Messages/Messages";
 import './Chat.css';
 import TextContainer from "../TextContainer/TextContainer";
 
-const ENDPOINT = 'https://chatapp-dicordstyle.netlify.app/';
+const ENDPOINT = 'https://chatapp-prathamjha1.onrender.com/';
 let socket;
 
 const Chat = () => {

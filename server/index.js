@@ -22,7 +22,7 @@ router.get('/json',(req,res)=>{
     res.send("Oooo Papi");
 })
 
-app.use('/.netlify/functions/api',router);
+app.use('/',router);
 
 io.on('connection', (socket)=>{
     console.log("We have  a new connection !!!");
